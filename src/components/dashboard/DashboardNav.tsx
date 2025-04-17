@@ -2,12 +2,24 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
+import { useAuthStore } from "@/store/useAuthStore";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface DashboardNavProps extends React.HTMLAttributes<HTMLElement> {
   onMenuClick: () => void;
 }
 
 export function DashboardNav({ className, onMenuClick, ...props }: DashboardNavProps) {
+  const logout = useAuthStore((state) => state.logout);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    toast.success("Logged out successfully");
+    navigate("/login");
+  };
+
   return (
     <nav
       className={cn(
@@ -22,10 +34,7 @@ export function DashboardNav({ className, onMenuClick, ...props }: DashboardNavP
       <div className="ml-auto flex items-center space-x-4">
         <Button
           variant="ghost"
-          onClick={() => {
-            // Handle logout here
-            console.log("Logout clicked");
-          }}
+          onClick={handleLogout}
         >
           Logout
         </Button>
