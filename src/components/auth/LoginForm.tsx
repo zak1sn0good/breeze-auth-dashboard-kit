@@ -15,11 +15,13 @@ export function LoginForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (login(email, password)) {
+    const loginSuccess = login(email, password);
+    
+    if (loginSuccess) {
       toast.success("Logged in successfully");
       navigate("/dashboard");
     } else {
-      toast.error("Invalid credentials");
+      toast.error("Invalid email or password");
     }
   };
 
