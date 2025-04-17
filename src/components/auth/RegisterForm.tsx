@@ -4,16 +4,23 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/useAuthStore";
+import { toast } from "sonner";
 
 export function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const register = useAuthStore((state) => state.register);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle registration
-    console.log("Register:", { email, password });
+    if (register(email, password)) {
+      toast.success("Account created successfully");
+      navigate("/dashboard");
+    } else {
+      toast.error("Email already exists");
+    }
   };
 
   return (

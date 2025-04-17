@@ -4,16 +4,23 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/useAuthStore";
+import { toast } from "sonner";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const login = useAuthStore((state) => state.login);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle login
-    console.log("Login:", { email, password });
+    if (login(email, password)) {
+      toast.success("Logged in successfully");
+      navigate("/dashboard");
+    } else {
+      toast.error("Invalid credentials");
+    }
   };
 
   return (
