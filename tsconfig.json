@@ -9,11 +9,13 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "types": ["vite-plugin-svgr/client"],
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,
     "allowJs": true,
     "noUnusedLocals": false,
     "strictNullChecks": false
-  }
+  },
+  "include": ["vite-env.d.ts"]
 }
