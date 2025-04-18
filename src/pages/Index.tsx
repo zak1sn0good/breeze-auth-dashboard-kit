@@ -1,18 +1,26 @@
 
 import Navbar from "@/components/common/Navbar";
 import { Link } from "react-router-dom";
+import BackgroundImage from  "@/assets/svgs/background.svg";
+import Hook from "@/assets/svgs/hook.svg?react";
 
 const Index = () => {
   return (
     <div className="relative flex min-h-screen flex-col items-center">
       <Navbar />
-      <div className="pt-[100px] min-h-screen flex flex-col justify-center">
-        <div className="flex flex-col items-center gap-10 max-w-4xl -mt-52">
+      <div 
+        className="mt-[100px] min-h-[calc(100vh-100px)] w-full flex flex-col justify-center bg-no-repeat bg-center bg-cover"
+        style={{
+          backgroundImage: `url(${BackgroundImage})`,
+        }}
+      >
+        <div className="flex flex-col items-center gap-10 max-w-4xl -mt-28 mx-auto">
           <div className="flex flex-col items-center gap-4">
-            <h1 className="text-[40px] font-bold text-center">
+            <h1 className="relative text-[40px] font-bold text-center">
               <span className="text-[#DD679A]">Hook</span>
               <span className="text-[#0A0A0A] mx-2">your audience before they</span>
               <span className="text-[#B2014D]">scroll</span>
+              <Hook className="absolute -top-4 -right-16 -z-10" />
             </h1>
             <p className="text-2xl text-[#858585] font-normal text-center">
               Create scroll-stopping ad creatives, instantly generated from smart personas and proven angles.
