@@ -1,7 +1,9 @@
 
 import { DashboardNav } from "@/components/dashboard/DashboardNav";
 import { Sidebar } from "@/components/dashboard/Sidebar";
+import Heading from "@/components/common/Heading";
 import { useState } from "react";
+import GenerateButton from "@/components/common/GenerateButton";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -11,11 +13,9 @@ const Dashboard = () => {
       <Sidebar isOpen={isSidebarOpen} />
       <div className="flex-1">
         <DashboardNav onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-        <main className="container p-6">
-          <h1 className="text-3xl font-bold">Dashboard</h1>
-          <p className="mt-4 text-muted-foreground">
-            Welcome to your dashboard! This is where you'll see your content.
-          </p>
+        <main className="container p-6 space-y-2">
+          <Heading/>
+          <GenerateButton onClick={() => alert("Generate button clicked!")}/>
         </main>
       </div>
     </div>
