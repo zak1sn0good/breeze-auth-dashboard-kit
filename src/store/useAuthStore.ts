@@ -7,7 +7,7 @@ interface User {
   password: string;
 }
 
-interface AuthState {
+export interface AuthState {
   users: User[];
   currentUser: Omit<User, "password"> | null;
   register: (email: string, password: string) => boolean;
